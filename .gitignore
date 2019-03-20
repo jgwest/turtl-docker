@@ -1,0 +1,7 @@
+data/
+server/
+settings/
+.gitold/
+logs/
+turtl-backup-*
+
