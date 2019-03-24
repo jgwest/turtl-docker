@@ -1,0 +1,45 @@
+#!/bin/bash
+
+
+# ----------------------------
+# Set these values:
+
+# Location of turtl-docker/settings directory
+# example: (...)=/home/user/git/turtl-docker/settings
+export TEV_SCRIPT_LOCT=
+
+# Convert to absolute path if needed
+# export TEV_SCRIPT_LOCT=`cd $TEV_SCRIPT_LOCT; pwd`
+
+export TRTL_DATA_DIR=$TEV_SCRIPT_LOCT/../data
+
+# Convert to absolute
+export TRTL_DATA_DIR=`cd "$TRTL_DATA_DIR"; pwd`
+
+
+export TRTL_TARSNAP_KEY=$TEV_SCRIPT_LOCT/tarsnap.key
+export TRTL_LETS_ENCRYPT_DIR=$TEV_SCRIPT_LOCT/letsencrypt
+
+export TRTL_MAIL_SETTINGS_MSMTPRC_DIR=$TEV_SCRIPT_LOCT/mail
+
+export TRTL_TARSNAP_CACHE_DIR="$TRTL_DATA_DIR/tarsnap-cache"
+
+# Password is hardcoded here, as Postgres is never externally exposed, it is 
+# only only accessible by the turtl server container.
+# For additional security, feel free to change this value before first postgres use.
+export TRTL_POSTGRES_PASSWORD=eblfkp7385mfph8cy1hcmfaieahd8qkc
+
+
+# example: (...)=youremail@mail.com
+export TRTL_EMAIL_ADDRESS=
+
+# example: (...)=mydomain.com
+export TRTL_DOMAIN_NAME=
+
+# example: (...)=www.mydomain.com
+export TRTL_DOMAIN_NAME_WWW=
+
+export TRTL_SECURE_HASH_SALT=BF3HRXcoU43mX2UQAuUOn17KUR6Ky1xPZGNLgYbSUvpqjy4KxR1Q45Wk0X5gMDrq
+
+# ----------------------------
+
