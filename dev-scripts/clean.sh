@@ -23,6 +23,11 @@ if [ "$STRING_TO_TYPE" == "$CONFIRMATION_STRING" ]; then
 
 	mkdir -p data/turtl
 
+	mkdir -p data/nginx-tmp/conf.d
+	mkdir -p data/nginx-tmp/cache
+	mkdir -p data/nginx-tmp/var-run
+	sudo chown -R www-data:www-data data/nginx-tmp
+
 	echo "* Operation complete."
 
 else
