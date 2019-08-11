@@ -61,7 +61,7 @@ Before installation, see caveats section below.
 
 ## Some Assembly Required
 
-Configuring and administering a Turtl server can be a complex process, requiring some familiarity with Linux system adminstration and the details of this repository. It is much easier to use the central server hosted by the Turtl development team (and consider donating and/or subscribing to their premium service once it becomes available!). You might be required to get into the nitty gritty details of the `turtl-server` implementation if things go wrong. Hopefully it goes without saying, but I am not responsible for the ongoing maintenance of any self-hosted server you create, but I aim to help on a best-effort basis.
+Configuring and administering a Turtl server can be a complex process, requiring some familiarity with Linux system adminstration and the details of this repository. It is much easier to use the central server hosted by the Turtl development team (and consider donating and/or subscribing to their premium service!) You might be required to get into the nitty gritty details of the `turtl-docker`  implementation if things go wrong. Hopefully it goes without saying, but I am not responsible for the ongoing maintenance of any self-hosted server you create, but I aim to help on a best-effort basis.
 
 I am not affiliated with the Turtl developers; I created this as a personal project to host Turtl on a standalone DigitalOcean server. More information on the Turtl project is available from the links above.
 
