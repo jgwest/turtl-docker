@@ -42,7 +42,7 @@ Before installation, see caveats section below.
     - `export TEV_SCRIPT_LOCT=(absolute path of settings dir)`
     - `export TRTL_EMAIL_ADDRESS=(your email address)`
     - `export TRTL_DOMAIN_NAME=(domain to register using let's encryption, example: mydomain.com)`
-    - `export TRTL_DOMAIN_NAME_WWW=(domain to register using let's encryption, with www. prefic. example: www.mydomain.com)        `
+    - `export TRTL_DOMAIN_NAME_WWW=(domain to register using let's encryption, with 'www.' prefix, example: www.mydomain.com)        `
   - *Optional, but recommended*: Place your `tarsnap.key` in the `settings/` directory, to allow turtl-docker to automatically backup to Tarsnap.
   - *Optional, but recommended* - job failure email reporting using an email account:
     - Under `settings/`, `cd mail`
