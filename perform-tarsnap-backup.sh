@@ -13,7 +13,7 @@ include_trtl_env_vars settings/trtl-env-var.sh
 set -e
 
 
-# Set the tarsnap key to $1 or to value from env var file ------------
+# Set the tarsnap key to $1 or to the value from env var file ------------
 
 export_tarsnap_key $1
 

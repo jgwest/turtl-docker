@@ -15,7 +15,7 @@ if [ -z "$SERVER_ARCHIVE_NAME" ]; then
 	exit
 fi
 
-# Set the tarsnap key to $2 or to value from env var file ------------
+# Set the tarsnap key to $2 or to the value from env var file ------------
 
 export_tarsnap_key "$2"
 
