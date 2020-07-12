@@ -20,7 +20,9 @@ fi
 if [ "$DOMAIN_NAME" == "noletsencrypt" ]; then
 	# This allows the nginx container to run even if letsencrypt certs are not linked.
 	echo "* Letsencrypt directory not found, so removing SSL values from nginx' site.conf"
-	cat /etc/nginx/conf.d-default/default.conf | grep -v "ssl_cert" > /etc/nginx/conf.d/default.conf
+	cat /etc/nginx/conf.d-default/default.conf | grep -v "ssl_cert" > /etc/nginx/conf.d/default.conf1
+	cat /etc/nginx/conf.d/default.conf1 | grep -v "listen 8443 ssl" > /etc/nginx/conf.d/default.conf
+
 else
 	cp /etc/nginx/conf.d-default/default.conf /etc/nginx/conf.d/default.conf
 	echo "* Substituting domain name into nginx' site.conf."

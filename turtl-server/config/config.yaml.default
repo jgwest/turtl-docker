@@ -18,6 +18,12 @@ app:
   # no trailing slash
   api_url: 'https://xqxohx6rsa'
   www_url: 'https://xqxohx6rsa'
+  login:
+    # Max failed login attemps. Set to -1 to disable
+    max_attemps: 5
+    # User locked for this duration in seconds
+    lock_duration: 60
+
 #  api_url: 'http://localhost:8080'
 #  www_url: 'https://yourdomain.com'
   emails:

@@ -18,6 +18,8 @@ set -e
 
 export_turtl_server_data_dir $1
 
+export_secure_hash_salt $2
+
 # ------------------
 
 set +e
@@ -33,6 +35,7 @@ docker run \
 	--restart always \
 	--link turtl-postgres:postgres \
 	--cap-drop=all --cap-add=chown --cap-add=kill --cap-add=dac_override \
+	-e TURTL_APP_SECURE_HASH_SALT="$SECURE_HASH_SALT" \
 	--read-only \
 	-d \
 	-v "$SERVER_DATA_DIR":/var/www/turtl/server/public/uploads \
