@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Move to the directory of the script that included this include file ------
 
 export SCRIPT_ROOT=$( cd $( dirname $0 ); pwd )
@@ -35,13 +34,15 @@ cd $BACKUP_DIR
 
 echo "* Restoring backup."
 
-tarsnap --cachedir $CACHE_DIR --keyfile $KEY_FILE -x -v -f $1  
+tarsnap --cachedir $CACHE_DIR --keyfile $KEY_FILE -x -v -p -o -f $1
 RC=$?
 if [ $RC -gt 0 ]; then
 	echo "* Error occured on restore. Flushing cache directory and exiting."
 	rm -rf "$CACHE_DIR"
 	exit 1
 fi
+
+chmod -R a+rwx "$BACKUP_DIR"
 
 echo "* Restore complete."
 

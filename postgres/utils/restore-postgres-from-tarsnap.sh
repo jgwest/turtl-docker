@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # Move to the directory of the script that included this include file ------
 
