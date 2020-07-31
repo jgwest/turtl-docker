@@ -11,7 +11,7 @@ read STRING_TO_TYPE
 
 if [ "$STRING_TO_TYPE" == "$CONFIRMATION_STRING" ]; then
 
-	docker rm -f turtl-server turtl-postgres turtl-nginx >/dev/null 2>&1
+	docker rm -f turtl-server turtl-postgres turtl-nginx turtl-inlets >/dev/null 2>&1
 	set -e
 
 	export SCRIPT_LOCT=$( cd $( dirname $0 ); pwd )

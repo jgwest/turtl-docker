@@ -245,6 +245,41 @@ export_tarsnap_cache_dir () {
 
 }
 
+export_inlets_remote () {
+
+	export INLETS_REMOTE="$1"
+
+	if [ -z "$INLETS_REMOTE" ]; then
+		export INLETS_REMOTE=$TRTL_INLETS_REMOTE
+	fi
+
+	if [ -z "$INLETS_REMOTE" ]; then
+		echo "Inlets remote is not specified, exiting."
+		exit 0
+	else
+		echo "Using $INLETS_REMOTE as inlets remote."
+	fi
+
+}
+
+
+export_inlets_token () {
+
+	export INLETS_TOKEN="$1"
+
+	if [ -z "$INLETS_TOKEN" ]; then
+		export INLETS_TOKEN=$TRTL_INLETS_TOKEN
+	fi
+
+	if [ -z "$INLETS_TOKEN" ]; then
+		echo "Inlets token is not specified, exiting."
+		exit 0
+	else
+		echo "Using $INLETS_TOKEN as inlets token."
+	fi
+
+}
+
 
 # Convert a (potentially relative) path to absolute; use this if function if the current user
 # does not have permission to access the last folder on the path.
@@ -296,3 +331,32 @@ delete_all_scoped_temp_dirs() {
 }
 
 
+is_certbot_enabled() {
+
+	if [ "$TRTL_ENABLE_CERTBOT" == "true" ]; then
+		echo "true"
+	else
+		echo "false"
+	fi
+
+}
+
+is_nginx_enabled() {
+
+	if [ "$TRTL_ENABLE_NGINX" == "true" ]; then
+		echo "true"
+	else
+		echo "false"
+	fi
+
+}
+
+is_inlets_enabled() {
+
+	if [ "$TRTL_ENABLE_INLETS" == "true" ]; then
+		echo "true"
+	else
+		echo "false"
+	fi
+
+}

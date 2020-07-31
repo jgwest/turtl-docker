@@ -8,8 +8,6 @@ cd $SCRIPT_LOCT
 . dev-scripts/trtl-includes.sh
 include_trtl_env_vars settings/trtl-env-var.sh 
 
-# -------
-
 export_postgres_data_dir $1
 # POSTGRES_DATA_DIR
 
@@ -35,11 +33,16 @@ set -e
 
 cd $SCRIPT_LOCT
 
-echo 
-echo "* Acquiring/renewing SSL/TLS certificate from Let's Encrypt."
-cd certbot
-./run.sh
-cd ..
+
+if [ "$( is_certbot_enabled )" == "true" ]; then
+
+    echo 
+    echo "* Acquiring/renewing SSL/TLS certificate from Let's Encrypt."
+    cd certbot
+    ./run.sh
+    cd ..
+
+fi
 
 echo 
 echo "* Starting Postgres"
@@ -53,10 +56,22 @@ cd turtl-server
 ./run.sh $SERVER_DATA_DIR
 cd ..
 
-echo
-echo "* Starting nginx"
-cd nginx
-./run.sh $LE_DIR
-cd ..
+if [ "$( is_nginx_enabled )" == "true" ]; then
 
+    echo
+    echo "* Starting nginx"
+    cd nginx
+    ./run.sh $LE_DIR
+    cd ..
 
+fi
+
+if [ "$( is_inlets_enabled )" == "true" ]; then
+
+    echo
+    echo "* Starting inlets client"
+    cd inlets
+    ./run.sh
+    cd ..
+    
+fi

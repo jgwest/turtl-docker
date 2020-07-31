@@ -28,7 +28,6 @@ cd ..
 
 cd postgres
 ./build.sh
-#./update.sh
 cd ..
 
 cd certbot
@@ -37,6 +36,10 @@ cd ..
 
 
 cd mail
+./build.sh
+cd ..
+
+cd inlets
 ./build.sh
 cd ..
 

@@ -45,18 +45,21 @@ if [[ $? -ne 0 ]] ; then
 fi
 rm -f $SERVER_DATA_DIR/turtl-server.backup
 
+if [ "$( is_certbot_enabled )" == "true" ]; then
 
-echo
-echo "* Backing up $LE_DIR"
-cd $LE_DIR
-sudo bash -c "echo $LE_DIR > $LE_DIR/letsencrypt.backup"
-sudo tar czvf $TURTL_TMP/turtl-letsencrypt-dir.tar.gz *
-if [[ $? -ne 0 ]] ; then 
+	echo
+	echo "* Backing up $LE_DIR"
+	cd $LE_DIR
+	sudo bash -c "echo $LE_DIR > $LE_DIR/letsencrypt.backup"
+	sudo tar czvf $TURTL_TMP/turtl-letsencrypt-dir.tar.gz *
+	if [[ $? -ne 0 ]] ; then 
+		sudo rm -f "$LE_DIR/letsencrypt.backup"
+		rm -rf "$TURTL_TMP"
+		exit 1;  
+	fi
 	sudo rm -f "$LE_DIR/letsencrypt.backup"
-	rm -rf "$TURTL_TMP"
-	exit 1;  
+
 fi
-sudo rm -f "$LE_DIR/letsencrypt.backup"
 
 echo
 echo "* Backing up Postgres"
@@ -93,8 +96,6 @@ echo
 echo
 
 tar czvf $TARGET_ARCHIVE *
-#$TURTL_TMP/turtl-postgres.tar.gz $TURTL_TMP/turtl-letsencrypt-dir.tar.gz $TURTL_TMP/turtl-server-data-dir.tar.gz
-
 
 echo
 echo "* Backups complete."
@@ -104,7 +105,7 @@ rm -f $PG_TAR_GZ_PATH
 
 echo `basename $TARGET_ARCHIVE`
 echo
-echo "To extract the archive (required due to colons in the file name), use: tar xzv --force-local f $TARGET_ARCHIVE"
+echo "To extract the archive (required due to colons in the filename), use: tar xzv --force-local f $TARGET_ARCHIVE"
 echo 
 
 

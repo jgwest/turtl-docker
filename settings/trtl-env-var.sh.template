@@ -41,5 +41,13 @@ export TRTL_DOMAIN_NAME_WWW=
 
 export TRTL_SECURE_HASH_SALT=BF3HRXcoU43mX2UQAuUOn17KUR6Ky1xPZGNLgYbSUvpqjy4KxR1Q45Wk0X5gMDrq
 
+export TRTL_INLETS_REMOTE=
+
+export TRTL_INLETS_TOKEN=
+
+export TRTL_ENABLE_CERTBOT=true
+export TRTL_ENABLE_NGINX=true
+export TRTL_ENABLE_INLETS=false
+
 # ----------------------------
 

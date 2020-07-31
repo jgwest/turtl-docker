@@ -17,20 +17,26 @@ FILE_DOM=$(date +%d)
 
 REPO_ROOT="$SCRIPT_LOCT/.."
 
-# renew and backup certbox:
-# - Run the renew on every Monday, and every 1st of the month (in both cases, we do this for tsar)
-# - Otherwise, run every 6 days.
-if [ "$FILE_DOW" -eq "1" ] || [ "$FILE_DOM" -eq "01" ] || [ $(( $DAY_OF_YEAR % 6 )) -eq 0 ]; then
-	"$REPO_ROOT/dev-scripts/log-job-console.sh" "$REPO_ROOT/logs" "certbot" "$REPO_ROOT/certbot/job-renew-and-backup.sh" 
-	sleep 10s
+if [ "$( is_certbot_enabled )" == "true" ]; then
+
+	# renew and backup certbot:
+	# - Run the renew on every Monday, and every 1st of the month (in both cases, we do this for tsar)
+	# - Otherwise, run every 6 days.
+	if [ "$FILE_DOW" -eq "1" ] || [ "$FILE_DOM" -eq "01" ] || [ $(( $DAY_OF_YEAR % 6 )) -eq 0 ]; then
+		"$REPO_ROOT/dev-scripts/log-job-console.sh" "$REPO_ROOT/logs" "certbot" "$REPO_ROOT/certbot/job-renew-and-backup.sh" 
+		sleep 10s
+	fi
+
 fi
 
+if [ "$( is_nginx_enabled )" == "true" ]; then
 
+	# update nginx ( no backup ) (/3)
+	if [ $(( $DAY_OF_YEAR % 3 )) -eq 0 ]; then
+		"$REPO_ROOT/dev-scripts/log-job-console.sh" "$REPO_ROOT/logs" "nginx" "$REPO_ROOT/nginx/update-and-run-if-newer.sh"
+		sleep 10s
+	fi
 
-# update nginx ( no backup ) (/3)
-if [ $(( $DAY_OF_YEAR % 3 )) -eq 0 ]; then
-	"$REPO_ROOT/dev-scripts/log-job-console.sh" "$REPO_ROOT/logs" "nginx" "$REPO_ROOT/nginx/update-and-run-if-newer.sh"
-	sleep 10s
 fi
 
 # backup postgres

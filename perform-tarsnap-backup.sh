@@ -12,7 +12,6 @@ include_trtl_env_vars settings/trtl-env-var.sh
 
 set -e
 
-
 # Set the tarsnap key to $1 or to the value from env var file ------------
 
 export_tarsnap_key $1
@@ -23,12 +22,16 @@ export_letsencrypt_dir $2
 
 # --------------------------------------------
 
-echo
-echo "* Backing up certbot files"
-echo
-cd $SCRIPT_LOCT/certbot/utils
-./backup-certbot-to-tarsnap.sh "$TARSNAP_KEY_FILE" "$LE_DIR"
-sleep 10s
+if [ "$( is_certbot_enabled )" == "true" ]; then
+
+    echo
+    echo "* Backing up certbot files"
+    echo
+    cd $SCRIPT_LOCT/certbot/utils
+    ./backup-certbot-to-tarsnap.sh "$TARSNAP_KEY_FILE" "$LE_DIR"
+    sleep 10s
+
+fi
 
 echo
 echo "* Backing up postgres files"
