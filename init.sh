@@ -8,6 +8,7 @@ cd $SCRIPT_ROOT
 set -e
 
 mkdir -p data/postgres
+mkdir -p data/postgres/turtl-tmp
 sudo chown -R www-data:www-data data/postgres
 
 mkdir -p data/turtl
