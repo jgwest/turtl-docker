@@ -34,6 +34,9 @@ cd certbot
 ./build.sh
 cd ..
 
+cd certbot-new
+./build.sh
+cd ..
 
 cd mail
 ./build.sh

@@ -38,7 +38,7 @@ if [ "$( is_certbot_enabled )" == "true" ]; then
 
     echo 
     echo "* Acquiring/renewing SSL/TLS certificate from Let's Encrypt."
-    cd certbot
+    cd certbot-new
     ./run.sh
     cd ..
 

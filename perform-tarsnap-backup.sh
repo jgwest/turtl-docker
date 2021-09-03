@@ -27,7 +27,7 @@ if [ "$( is_certbot_enabled )" == "true" ]; then
     echo
     echo "* Backing up certbot files"
     echo
-    cd $SCRIPT_LOCT/certbot/utils
+    cd $SCRIPT_LOCT/certbot-new/utils
     ./backup-certbot-to-tarsnap.sh "$TARSNAP_KEY_FILE" "$LE_DIR"
     sleep 10s
 
